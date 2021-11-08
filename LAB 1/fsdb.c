@@ -8,8 +8,8 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-#define MAXPATH 500   //should try to find a predifined POSIX-based alternative (PATH_MAX?).
-#define entryEXTENSIONLENGTH 6
+#define MAXPATH 500   //should try to find a predifined POSIX-based alternative (PATH_MAX? MAX_PATH?).
+#define dotentryEXTENSIONLENGTH 6
 
 #define ERR(source) (perror(source),\
 		     fprintf(stderr,"%s:%d\n",__FILE__,__LINE__),\
@@ -21,7 +21,7 @@ void usage(char* pname){
 	exit(EXIT_FAILURE);
 }
 #define USG(pname) (fprintf(stderr,"%s:%d\n",__FILE__,__LINE__),\
-            usage(pname))
+            usage(pname))       //I created the USG macro to give find exactly which arguments were wrong (based on position of USG called)
 
 // void set(char** argv,char* key,char* value,char* L1_DATABASE)
 // {  
@@ -87,7 +87,7 @@ void get(char** argv, char* keyFileName, char* parentDir)
     char path[MAXPATH];
     sprintf(path,"%s%s",parentDir,keyFileName);
     char* key = strdup(keyFileName);
-    key[(strlen(key)-1)-entryEXTENSIONLENGTH+1]='\0'; //marks end of string so that the extension doesn't print.
+    key[(strlen(key)-1)-(dotentryEXTENSIONLENGTH-1)]='\0'; //marks end of string so that the extension doesn't print. //dotentryEXTENSION-1 because we want to change the . to '/0'
     FILE* s1;
     if((s1 = fopen(path, "r")) == NULL) ERR("fopen"); //should handle "file doesn't exist" as well!
     {
