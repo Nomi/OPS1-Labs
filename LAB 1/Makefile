@@ -1,5 +1,5 @@
 #
-### Welcome to my Makefile. Pretty neat, ain't it? ###
+### Welcome to my Makefile. Pretty neat, innit? ###
 #
 CC=gcc#or clang
 CFLAGS= -std=gnu99 -Wall -g -fsanitize=address,undefined
