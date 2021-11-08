@@ -17,7 +17,7 @@
 
 
 void usage(char* pname){
-	fprintf(stderr,"USAGE:%s [-s|-g|-l] -k lowercasestring {-v string (only use with -s)}\n", pname);
+	fprintf(stderr,"USAGE:%s [-s|-g|-l] {-k lowercasestring (don't use with -l)} {-v string (only use with -s)}\n", pname);
 	exit(EXIT_FAILURE);
 }
 #define USG(pname) (fprintf(stderr,"%s:%d\n",__FILE__,__LINE__),\
