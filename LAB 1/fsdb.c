@@ -152,6 +152,7 @@ int main(int argc, char** argv)
 
     char*key=NULL;
     char*value=NULL;
+    /* This and the following such commented block has been replaced by a single line from tutoria (it is right after the second block)
     int argcChecker=1;
     for(int i=1;i<argc;i++)
     {
@@ -162,6 +163,7 @@ int main(int argc, char** argv)
             argcChecker--;  //because argc considers -sk  to be one argument but getopt treats argcChecker increments for s and k seperately (similarly for others such as g)
         }
     }
+    */
     if(argc<2)
         USG(argv[0]);
     else
@@ -220,8 +222,11 @@ int main(int argc, char** argv)
     }
     // printf("%d,%d",argc,argcChecker);
     // fflush(stdout);
+    /* This and the previous such commented block has been replaced by a single line from tutorial (it's right after this block)
     if(argcChecker!=argc)
-        USG(argv[0]);
+         USG(argv[0]);
+    */
+    if(argc>optind) USG(argv[0]);
     if(operation=='s'&&value==NULL)
         USG(argv[0]);
     if(operation=='g'&&key==NULL)
